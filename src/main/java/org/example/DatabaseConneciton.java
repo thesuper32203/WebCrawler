@@ -6,22 +6,22 @@ import java.sql.SQLException;
 
 public class DatabaseConneciton {
 
-    String variable = System.getenv("password");
+    static String variable = System.getenv("password");
     //To get the value of the above example
 
     static Connection connection = null;
 
-    public Connection getConnection() throws ClassNotFoundException, SQLException {
+    public static Connection getConnection() throws ClassNotFoundException, SQLException {
         if(connection!= null){
             return connection;
         }
         String user = "root";
-        String pwd = variable;
-        String db = "searchenginapp";
+        String pwd = "enterpassword";
+        String db = "searchengineapp1";
         return getConnection(user,pwd,db);
     }
 
-    private Connection getConnection(String userName, String passWord, String db) {
+    private static Connection getConnection(String userName, String passWord, String db) {
        try {
            Class.forName("com.mysql.cj.jdbc.Driver");
            connection = DriverManager.getConnection("jdbc:mysql://localhost/" + db + "?user=" + userName + "&password=" + passWord);
